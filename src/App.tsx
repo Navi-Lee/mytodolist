@@ -6,7 +6,7 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import { Button, Tabs } from "antd";
+import { Button, Tabs, Typography} from "antd";
 import "./App.css";
 const Navi = () => {
   const location = useLocation();
