@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { Button, Tabs, Typography} from "antd";
 import "./App.css";
+const { Title } = Typography;
 const Navi = () => {
   const location = useLocation();
   const navigate = useNavigate();
