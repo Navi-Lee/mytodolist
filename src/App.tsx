@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { Button, Tabs, Typography} from "antd";
 import "./App.css";
+import Todolist from './page/todolist'
 const { Title } = Typography;
 const Navi = () => {
   const location = useLocation();
@@ -39,10 +40,11 @@ const AppContent = () => {
   const navigate = useNavigate();
   return (
     <>
-      <Title>Todolist，开始于2026/4/15</Title>
-      <Navi></Navi>
+      {/* <Title>Todolist，开始于2026/4/15</Title> */}
+      <div className="container">
+      <Navi/>
       <Routes>
-        <Route path="/" element={<h1>path/</h1>} />
+        <Route path="/" element={<Todolist/>} />
         <Route path="/form/fuck" element={<h1>path//form</h1>} />
         <Route path="/blank" element={<h1>path//blank</h1>} />
         <Route
@@ -61,6 +63,7 @@ const AppContent = () => {
           }
         />
       </Routes>
+      </div>
     </>
   );
 };
