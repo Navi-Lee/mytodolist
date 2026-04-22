@@ -117,7 +117,7 @@ const Todolist: React.FC = () => {
             </Button>
           </Space>
 
-          <Space style={{ justifyContent: 'space-between', width: '100%' }}>
+          <Space style={{ justifyContent: 'space-between', width: '50%' }}>
             <Text type="secondary">
               已完成 {completedCount} / 总计 {todos.length}
             </Text>

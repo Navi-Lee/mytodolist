@@ -1,4 +1,4 @@
-/* 全局样式重置和基础设置 */
+全局样式重置和基础设置
 * {
   margin: 0;
   padding: 0;
@@ -24,7 +24,7 @@
 }
 
 /* 自定义滚动条样式 */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
@@ -42,7 +42,7 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.5);
-}
+} */
 
 /* 导航栏样式 */
 .ant-tabs {
