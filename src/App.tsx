@@ -46,7 +46,7 @@ const AppContent = () => {
       <Navi/>
       <Routes>
         <Route path="/" element={<Todolist/>} />
-        <Route path="/form/fuck" element={<h1>path//form</h1>} />
+        <Route path="/form" element={<h1>path//form</h1>} />
         <Route path="/blank" element={<h1>path//blank</h1>} />
         <Route
           path="*"
