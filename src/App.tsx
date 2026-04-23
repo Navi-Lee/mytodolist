@@ -19,7 +19,7 @@ const Navi = () => {
       label: "todolist",
     },
     {
-      key: "/form/fuck",
+      key: "/form",
       label: "表单示例",
     },
     {
