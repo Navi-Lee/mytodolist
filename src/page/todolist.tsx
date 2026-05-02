@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { List, Input, Button, Checkbox, Space, Typography, Radio, Card, message } from 'antd';
 import { PlusOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { useTodoStore } from '../store/todostore';
-// import { useTodoContext } from '../store/TodoContext';
+import { useTodoContext } from '../store/todocontext';
 // import { useAppDispatch, useAppSelector } from '../store/hooks';
 // import { addTodo, toggleTodo, deleteTodo, updateTodo, clearCompleted } from '../store/todoSlice';
 
@@ -11,7 +11,7 @@ const { Search } = Input;
 
 type StateManagementType = 'zustand' | 'context' | 'redux';
 
-const Todolist: React.FC = () => {
+const Todolist = () => {
   const [stateManagement, setStateManagement] = useState<StateManagementType>('zustand');
   const [newTodo, setNewTodo] = useState('');
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -20,8 +20,8 @@ const Todolist: React.FC = () => {
   // Zustand状态
   const zustandStore = useTodoStore();
   
-//   // Context API状态
-//   const contextStore = useTodoContext();
+  // Context API状态
+  const contextStore = useTodoContext();
   
 //   // Redux状态
 //   const reduxTodos = useAppSelector((state) => state.todos.todos);
@@ -32,8 +32,8 @@ const Todolist: React.FC = () => {
     switch (stateManagement) {
       case 'zustand':
         return zustandStore;
-    //   case 'context':
-    //     return contextStore;
+      case 'context':
+        return contextStore;
     //   case 'redux':
     //     return {
     //       todos: reduxTodos,
@@ -95,8 +95,8 @@ const Todolist: React.FC = () => {
             buttonStyle="solid"
           >
             <Radio.Button value="zustand">Zustand</Radio.Button>
-            {/* <Radio.Button value="context">Context API</Radio.Button>
-            <Radio.Button value="redux">Redux Toolkit</Radio.Button> */}
+            <Radio.Button value="context">Context API</Radio.Button>
+            {/* <Radio.Button value="redux">Redux Toolkit</Radio.Button> */}
           </Radio.Group>
 
           <Space style={{ width: '100%' }}>
@@ -188,7 +188,7 @@ const Todolist: React.FC = () => {
               }
               description={
                 <Text type="secondary" style={{ fontSize: 12 }}>
-                  创建于: {new Date(todo.createAt).toLocaleString()}
+                  创建于: {new Date(todo.createdAt).toLocaleString()}
                 </Text>
               }
             />

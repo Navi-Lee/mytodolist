@@ -9,6 +9,7 @@ import {
 import { Button, Tabs, Typography} from "antd";
 import "./App.css";
 import Todolist from './page/todolist'
+import { TodoProvider } from "./store/todocontext";
 const { Title } = Typography;
 const Navi = () => {
   const location = useLocation();
@@ -72,7 +73,9 @@ const AppContent = () => {
 export default function App() {
   return (
     <Router>
+      <TodoProvider>
       <AppContent />
+      </TodoProvider>
     </Router>
   );
 }

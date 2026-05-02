@@ -4,7 +4,7 @@ interface TodoItem {
   id: string;
   title: string;
   completed: boolean;
-  createAt: Date;
+  createdAt: Date;
 }
 interface TodoStore {
   todos: TodoItem[];
@@ -26,7 +26,7 @@ export const useTodoStore = create<TodoStore>()(
             id: Date.now().toString(),
             title,
             completed: false,
-            createAt: new Date(),
+            createdAt: new Date(),
           },
         ],
       })),
@@ -51,7 +51,8 @@ export const useTodoStore = create<TodoStore>()(
         todos: state.todos.filter((todo) => todo.completed === false), //也可写为!todo.completed
       })),
     setTodos: (todos) => set({ todos: todos }),
-  })), //
+  }), //
 
   { name: "todo-storage" },
+)
 );
