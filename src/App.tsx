@@ -10,6 +10,8 @@ import { Button, Tabs, Typography} from "antd";
 import "./App.css";
 import Todolist from './page/todolist'
 import { TodoProvider } from "./store/todocontext";
+import { Provider } from "react-redux";
+import {store} from './store'
 const { Title } = Typography;
 const Navi = () => {
   const location = useLocation();
@@ -73,9 +75,11 @@ const AppContent = () => {
 export default function App() {
   return (
     <Router>
+      <Provider store={store}>
       <TodoProvider>
       <AppContent />
       </TodoProvider>
+      </Provider>
     </Router>
   );
 }

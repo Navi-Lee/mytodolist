@@ -3,8 +3,8 @@ import { List, Input, Button, Checkbox, Space, Typography, Radio, Card, message 
 import { PlusOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { useTodoStore } from '../store/todostore';
 import { useTodoContext } from '../store/todocontext';
-// import { useAppDispatch, useAppSelector } from '../store/hooks';
-// import { addTodo, toggleTodo, deleteTodo, updateTodo, clearCompleted } from '../store/todoSlice';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { addTodo, toggleTodo, deleteTodo, updateTodo, clearCompleted } from '../store/todoslice';
 
 const { Title, Text } = Typography;
 const { Search } = Input;
@@ -24,8 +24,8 @@ const Todolist = () => {
   const contextStore = useTodoContext();
   
 //   // Redux状态
-//   const reduxTodos = useAppSelector((state) => state.todos.todos);
-//   const dispatch = useAppDispatch();
+  const reduxTodos = useAppSelector((state) => state.todos.todos);
+  const dispatch = useAppDispatch();
 
   // 根据选择的状态管理方案获取数据和方法
   const getStore = () => {
@@ -34,15 +34,15 @@ const Todolist = () => {
         return zustandStore;
       case 'context':
         return contextStore;
-    //   case 'redux':
-    //     return {
-    //       todos: reduxTodos,
-    //       addTodo: (title: string) => dispatch(addTodo(title)),
-    //       toggleTodo: (id: string) => dispatch(toggleTodo(id)),
-    //       deleteTodo: (id: string) => dispatch(deleteTodo(id)),
-    //       updateTodo: (id: string, title: string) => dispatch(updateTodo({ id, title })),
-    //       clearCompleted: () => dispatch(clearCompleted()),
-    //     };
+      case 'redux':
+        return {
+          todos: reduxTodos,
+          addTodo: (title: string) => dispatch(addTodo(title)),
+          toggleTodo: (id: string) => dispatch(toggleTodo(id)),
+          deleteTodo: (id: string) => dispatch(deleteTodo(id)),
+          updateTodo: (id: string, title: string) => dispatch(updateTodo({ id, title })),
+          clearCompleted: () => dispatch(clearCompleted()),
+        };
       default:
         return zustandStore;
     }
@@ -96,7 +96,7 @@ const Todolist = () => {
           >
             <Radio.Button value="zustand">Zustand</Radio.Button>
             <Radio.Button value="context">Context API</Radio.Button>
-            {/* <Radio.Button value="redux">Redux Toolkit</Radio.Button> */}
+            <Radio.Button value="redux">Redux Toolkit</Radio.Button>
           </Radio.Group>
 
           <Space style={{ width: '100%' }}>
