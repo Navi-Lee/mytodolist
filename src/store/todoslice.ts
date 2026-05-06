@@ -57,7 +57,7 @@ const todoSlice = createSlice({
     },
 
     deleteTodo: (state, action: PayloadAction<string>) => {
-      state.todos = state.todos.filter((todo) => (todo.id = action.payload));
+      state.todos = state.todos.filter((todo) => (todo.id !== action.payload));
       localStorage.setItem("redux-todos", JSON.stringify(state.todos));
     },
     updateTodo: (state, action: PayloadAction<{id:string;title:string}>) => {
