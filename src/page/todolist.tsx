@@ -5,11 +5,12 @@ import { useTodoStore } from '../store/todostore';
 import { useTodoContext } from '../store/todocontext';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { addTodo, toggleTodo, deleteTodo, updateTodo, clearCompleted } from '../store/todoslice';
+import { TodoUse } from '../store/todouse';
 
 const { Title, Text } = Typography;
 const { Search } = Input;
 
-type StateManagementType = 'zustand' | 'context' | 'redux';
+type StateManagementType = 'zustand' | 'context' | 'redux'|'useState';
 
 const Todolist = () => {
   const [stateManagement, setStateManagement] = useState<StateManagementType>('zustand');
@@ -25,6 +26,8 @@ const Todolist = () => {
   
 //   // Redux状态
   const reduxTodos = useAppSelector((state) => state.todos.todos);
+
+  const useStateTool = TodoUse()
   const dispatch = useAppDispatch();
 
   // 根据选择的状态管理方案获取数据和方法
@@ -43,6 +46,9 @@ const Todolist = () => {
           updateTodo: (id: string, title: string) => dispatch(updateTodo({ id, title })),
           clearCompleted: () => dispatch(clearCompleted()),
         };
+        case 'useState':
+          return useStateTool
+
       default:
         return zustandStore;
     }
@@ -97,6 +103,7 @@ const Todolist = () => {
             <Radio.Button value="zustand">Zustand</Radio.Button>
             <Radio.Button value="context">Context API</Radio.Button>
             <Radio.Button value="redux">Redux Toolkit</Radio.Button>
+            <Radio.Button value="useState">useState</Radio.Button>
           </Radio.Group>
 
           <Space style={{ width: '100%' }}>
