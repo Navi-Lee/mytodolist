@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export interface TodoItem {
   id: string;
@@ -8,20 +8,19 @@ export interface TodoItem {
 }
 
 export const TodoUse = () => {
-
   const [todos, setTodos] = useState<TodoItem[]>(() => {
-    const saved = localStorage.getItem('local-use-state-todos');
+    const saved = localStorage.getItem("local-use-state-todos");
     if (saved) {
-      return JSON.parse(saved, (key, value) => 
-        key === 'createdAt' ? new Date(value) : value
+      return JSON.parse(saved, (key, value) =>
+        key === "createdAt" ? new Date(value) : value,
       );
     }
     return [];
   });
 
-  // 2. 持久化存储
+  //持久化
   useEffect(() => {
-    localStorage.setItem('local-use-state-todos', JSON.stringify(todos));
+    localStorage.setItem("local-use-state-todos", JSON.stringify(todos));
   }, [todos]);
 
   const addTodo = (title: string) => {
@@ -31,32 +30,33 @@ export const TodoUse = () => {
       completed: false,
       createdAt: new Date(),
     };
-    setTodos(prev => [...prev, newTodo]);
+    setTodos((prev) => [...prev, newTodo]);
   };
 
   const toggleTodo = (id: string) => {
-    setTodos(prev => prev.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
+    setTodos((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t)),
+    );
   };
 
   const deleteTodo = (id: string) => {
-    setTodos(prev => prev.filter(t => t.id !== id));
+    setTodos((prev) => prev.filter((t) => t.id !== id));
   };
 
   const updateTodo = (id: string, title: string) => {
-    setTodos(prev => prev.map(t => t.id === id ? { ...t, title } : t));
+    setTodos((prev) => prev.map((t) => (t.id === id ? { ...t, title } : t)));
   };
 
   const clearCompleted = () => {
-    setTodos(prev => prev.filter(t => !t.completed));
+    setTodos((prev) => prev.filter((t) => !t.completed));
   };
 
-
-  return { 
-    todos, 
-    addTodo, 
-    toggleTodo, 
-    deleteTodo, 
-    updateTodo, 
-    clearCompleted 
+  return {
+    todos,
+    addTodo,
+    toggleTodo,
+    deleteTodo,
+    updateTodo,
+    clearCompleted,
   };
 };

@@ -9,6 +9,7 @@ import {
 import { Button, Tabs, Typography} from "antd";
 import "./App.css";
 import Todolist from './page/todolist'
+import FormPage from "./page/formPage";
 import { TodoProvider } from "./store/todocontext";
 import { Provider } from "react-redux";
 import {store} from './store'
@@ -49,7 +50,7 @@ const AppContent = () => {
       <Navi/>
       <Routes>
         <Route path="/" element={<Todolist/>} />
-        <Route path="/form" element={<h1>path//form</h1>} />
+        <Route path="/form" element={<FormPage/>}/>
         <Route path="/blank" element={<h1>path//blank</h1>} />
         <Route
           path="*"
