@@ -58,7 +58,7 @@ const FormPage:React.FC = ()=>{
         label='用户名'
         rules={[{validator :validatePhone}]}
         >
-          <Input placeholder='请输入用户名'></Input>
+          <Input placeholder='请输入用户名' prefix={<UserOutlined />}></Input>
         </Form.Item>
         
       </Form>
