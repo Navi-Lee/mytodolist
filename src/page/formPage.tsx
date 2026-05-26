@@ -223,7 +223,7 @@ const FormPage: React.FC = () => {
             </Form.Item>
 
             <Form.Item>
-              <Space style={{ justifyContent: "center" }}>
+              <Space wrap>
                 <Button
                   type="primary"
                   htmlType="submit"
